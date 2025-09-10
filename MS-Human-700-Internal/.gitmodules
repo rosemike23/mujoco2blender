@@ -1,0 +1,3 @@
+[submodule "agents/DynSyn-SAC"]
+	path = agents/DynSyn-SAC
+	url = git@github.com:LNSGroup/DynSyn-SAC-Internal.git

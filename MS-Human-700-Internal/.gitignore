@@ -1,0 +1,7 @@
+__pycache__
+log
+logs
+MUJOCO_LOG.TXT
+.vscode
+.DS_Store
+*.egg-info/

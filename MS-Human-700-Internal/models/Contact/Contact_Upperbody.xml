@@ -1,0 +1,35 @@
+<mujoco>
+  <contact>
+    <exclude body1="firstmc" body2="trapezium"/>
+    <exclude body1="firstmc" body2="secondmc"/>
+    <exclude body1="secondmc" body2="thirdmc"/>
+    <exclude body1="secondmc" body2="3proxph"/>
+    <exclude body1="thirdmc" body2="fourthmc"/>
+    <exclude body1="thirdmc" body2="2proxph"/>
+    <exclude body1="thirdmc" body2="4proxph"/>
+    <exclude body1="fourthmc" body2="fifthmc"/>
+    <exclude body1="fourthmc" body2="3proxph"/>
+    <exclude body1="fourthmc" body2="5proxph"/>
+    <exclude body1="fifthmc" body2="proximal_row"/>
+    <exclude body1="fifthmc" body2="4proxph"/>
+    <exclude body1="2proxph" body2="3proxph"/>
+    <exclude body1="3proxph" body2="4proxph"/>
+    <exclude body1="4proxph" body2="5proxph"/>
+
+    <exclude body1="firstmc_l" body2="trapezium_l"/>
+    <exclude body1="firstmc_l" body2="secondmc_l"/>
+    <exclude body1="secondmc_l" body2="thirdmc_l"/>
+    <exclude body1="secondmc_l" body2="3proxph_l"/>
+    <exclude body1="thirdmc_l" body2="fourthmc_l"/>
+    <exclude body1="thirdmc_l" body2="2proxph_l"/>
+    <exclude body1="thirdmc_l" body2="4proxph_l"/>
+    <exclude body1="fourthmc_l" body2="fifthmc_l"/>
+    <exclude body1="fourthmc_l" body2="3proxph_l"/>
+    <exclude body1="fourthmc_l" body2="5proxph_l"/>
+    <exclude body1="fifthmc_l" body2="proximal_row_l"/>
+    <exclude body1="fifthmc_l" body2="4proxph_l"/>
+    <exclude body1="2proxph_l" body2="3proxph_l"/>
+    <exclude body1="3proxph_l" body2="4proxph_l"/>
+    <exclude body1="4proxph_l" body2="5proxph_l"/>
+  </contact>
+</mujoco> 

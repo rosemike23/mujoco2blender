@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="MS_Human_700_Manipulation_Model">
+  <compiler inertiafromgeom="auto" angle="radian" boundmass="0.0001">
+    <lengthrange inttotal="50" useexisting="true"></lengthrange>
+  </compiler>
+   <option>
+      <flag contact="enable" gravity="enable"/>
+  </option>
+  <default>
+    <joint limited="true" damping="0.5" armature="1e-4" stiffness="0" />
+    <geom rgba="0.8 0.6 0.4 1" margin="0.001" />
+    <site size="0.001" group="3"/>
+    <tendon width="0.005" rgba="0.95 0.3 0.3 1" limited="false" />
+    <default class="muscle">
+      <muscle ctrllimited="true" ctrlrange="0 1" range="0.75 1.05" />
+    </default>
+    <default class="bone">
+      <geom rgba="0.9 0.7 0.5 1" contype="0" conaffinity="0" />
+    </default>
+    <default class="skin">
+      <geom type="capsule" rgba="0.8 0.7 .5 0.2" contype="1" conaffinity="1" condim="3" margin="0.001" group="1" />
+    </default>
+    <default class="wrap">
+        <geom rgba=".5 .5 .9 1" group="3" contype="0" conaffinity="0"/>
+    </default>
+    <default class="hip">
+      <joint limited="true" damping="1.0" armature="1e-2" stiffness="0" />
+    </default>
+    <default class="knee">
+      <joint limited="true" damping="0.5" armature="1e-2" stiffness="0" />
+    </default>
+    <default class="ankle">
+      <joint limited="true" damping="0.1" armature="1e-2" stiffness="0" />
+    </default>
+    <default class="toe">
+      <joint limited="true" damping="0.05" armature="1e-2" stiffness="0" />
+    </default>
+    <default class="shoulder">
+      <joint limited="true" damping="1.0" armature="1e-4" stiffness="0" />
+    </default>
+    <default class="elbow">
+      <joint limited="true" damping="0.5" armature="1e-4" stiffness="0" />
+    </default>
+    <default class="hand">
+      <joint limited="true" damping="0.05" armature="1e-4" stiffness="0" />
+    </default>
+    <default class="spine">
+      <joint limited="true" damping="0.2" armature="1e-4" stiffness="0" />
+    </default>
+  </default>
+  <size njmax="1000" nconmax="400" nuser_jnt="1"></size>
+  <visual>
+    <quality shadowsize="2048"/>
+    <headlight ambient="0.4 0.4 0.4" diffuse="0.8 0.8 0.8" specular="0.1 0.1 0.1"/>
+    <map znear="0.01"/>
+  </visual>
+
+  <worldbody>
+    <geom name="floor" pos="0 0 0" size="2 2 0.1" type="plane" condim="3" rgba="1 1 1 1" material="grid_vis" />
+  
+    <body name="pelvis" pos="0 0 0.94" quat="0.7071067811865475 0.7071067811865475 0.0 0.0">
+      <geom name="r_pelvis" type="mesh" mesh="r_pelvis" class="bone" />
+      <geom name="l_pelvis" type="mesh" mesh="l_pelvis" class="bone" />
+      <inertial pos="-0.0707 0 0" mass="11.777" fullinertia="0.1028 0.0871 0.0579 0 0 0" />
+      
+      <include file="Body_Manipulation/Body_Leg_Foot_Vis_r.xml"/>
+      <include file="Body_Manipulation/Body_Leg_Foot_Vis_l.xml"/>
+      <include file="Body_Manipulation/Body_Torso_Unimanual.xml"/>
+
+      <camera name="pelvis_camera" pos="2 1 2" euler="-0.5 0.7 0.3" mode="track" />
+    </body>
+
+    <include file="Body_Manipulation/Body_Waterbottle.xml"/>
+    
+    <body name="table" pos="0.45 0 0.90">
+      <geom contype="1" conaffinity="1" type="box" material="tablecube" pos="0 0 0" size=".4 .5 .02" friction="1.2 0.005 0.0001"/>
+      <geom contype="0" conaffinity="0" type="cylinder" fromto=".3 .3 -0.87 .3 .3 -0.001" size="0.04"/>
+      <geom contype="0" conaffinity="0" type="cylinder" fromto="-.3 .3 -0.87 -.3 .3 -0.001" size="0.04"/>
+      <geom contype="0" conaffinity="0" type="cylinder" fromto=".3 -.3 -0.87 .3 -.3 -0.001" size="0.04"/>
+      <geom contype="0" conaffinity="0" type="cylinder" fromto="-.3 -.3 -0.87 -.3 -.3 -0.001" size="0.04"/>
+    </body>
+
+    <camera name="record_camera" pos="1.624 0.830 1.433" xyaxes="-0.536 0.844 -0.000 -0.184 -0.117 0.976"/>
+
+  </worldbody>
+
+  <include file="Asset/Asset_Lowerbody.xml"/>
+  <include file="Asset/Asset_Torso.xml"/>
+  <include file="Asset/Asset_Upperbody.xml"/>
+  <include file="Asset/Asset_Others.xml"/>
+
+  <include file="Tendon/Tendon_Leg_r.xml"/>
+  <include file="Tendon/Tendon_Leg_l.xml"/>
+  <include file="Tendon/Tendon_Arm_Hand_r.xml"/>
+  <include file="Tendon/Tendon_Arm_Hand_l.xml"/>
+  <include file="Tendon/Tendon_Torso.xml"/>
+
+  <include file="Muscle/Muscle_Arm_Hand_r.xml"/>
+
+  <include file="Equality/Equality_Upperbody_r.xml"/>
+
+  <include file="Contact/Contact_Upperbody_r.xml"/>
+
+  <keyframe>
+    <key qpos='-0.0726404 0.0307636 -0.0307624 0.0732235 -0.0147169 0.120112 0.0539374 -0.0534441 -0.120205 0.0149685 0.283727 0.302294 -0.284371 -0.0609282 1.00112 1.1 0.0396042 -0.0109725 0.0513543 -0.0110132 0.19932 0.404178 -0.174419 -0.266069 0.171857 0.19443 0.446019 0.263181 -0.0116027 0.297233 0.1745 0.2792 0.000238738 -0.063557 0.088101 0.2403 0.333745 0.000649167 -0.102818 0.005 0.235575 0.3141 0 0 0 -1.57 0.32 0'/>
+  </keyframe>
+</mujoco>
