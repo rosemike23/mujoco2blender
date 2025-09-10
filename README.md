@@ -12,7 +12,7 @@ This tool allows you to import MuJoCo XML models and animations into Blender. It
 
 ## Usage Instructions
 
-1. Open Blender and switch to the Scripting workspace.
+1. Install Blender
 
 2. Press `Ctrl+Shift+P` to open the command palette, type `start` and select `Run Script`.
 
